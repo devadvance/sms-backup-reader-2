@@ -1,5 +1,7 @@
 # SMS Backup Reader 2
 
+## Info
+
 Note: SMS Backup and Restore saves emojis and other special characters in a very interesting way.
 
 Likely, it goes back to how characters are encoded in SMS.

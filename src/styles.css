@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+input[type="file"] {
+	display: none;
+}
+
+country-select {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+message-list {
+
+}
+
+contact-list {
+
+}
+
+.page-content {
+	overflow: hidden;
+	width: 100%;
+}
+
+.contacts {
+  overflow-y: scroll;
+	background: #f5f2f0;
+	position: absolute;
+	width: 30%;
+	/*padding: 10px;*/
+	left:0;
+	top:0;
+	bottom:0;
+}
+
+.messages {
+  overflow-y: scroll;
+	/*background: #fff123;*/
+	position: absolute;
+	width: 70%;
+	/*padding: 10px;*/
+	right:0;
+	top:0;
+	bottom:0;
+}
+
+.message-sent {
+  background: #FFF123;
+  text-align: right;
+}
+
+.message-received {
+  background: #DDD123;
+  text-align: left;
+}

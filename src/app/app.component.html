@@ -1,0 +1,41 @@
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title" routerLink="/main" routerLinkActive="active">SMS Backup Reader 2</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <sms-loader (onLoaded)="onLoaded($event)"></sms-loader>
+                <button class="mdl-button mdl-js-button mdl-button--accent" style="float:right;" routerLink="/settings" routerLinkActive="active">
+                    Settings
+                </button>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Menu</span>
+        <nav class="mdl-navigation">
+            <sms-loader (onLoaded)="onLoaded($event)"></sms-loader>
+            <a class="mdl-navigation__link" routerLink="/settings" routerLinkActive="active">Settings</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+
+            <router-outlet></router-outlet>
+
+        </div>
+    </main>
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">SMS Backup Reader 2</div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="http://mattj.io">&copy; 2016 Matt Joseph</a></li>
+                <li>SMS Backup Reader v{{appVersion}}</li>
+            </ul>
+        </div>
+    </footer>
+</div>

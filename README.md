@@ -4,6 +4,8 @@ This is an Angular-based web app designed to read the XML backup files produced 
 
 This app is currently in alpha.
 
+**You can access the app here: [http://mattj.io/sms-backup-reader-2/](http://mattj.io/sms-backup-reader-2/)**
+
 ## Features
 
 * Load SMS backup files produced by and Android app SMS Backup & Restore by Ritesh

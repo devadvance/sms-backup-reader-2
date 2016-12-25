@@ -1,8 +1,34 @@
 # SMS Backup Reader 2
 
-## Info
+This is an Angular-based web app designed to read the XML backup files produced by the Android app SMS Backup & Restore by Ritesh. It is designed to work in modern browsers, including Chrome, Firefox, Edge, and Safari. This app works locally and your SMS data **does not** leave your machine.
 
-Note: SMS Backup and Restore saves emojis and other special characters in a very interesting way.
+This app is currently in alpha.
+
+## Features
+
+* Load SMS backup files produced by and Android app SMS Backup & Restore by Ritesh
+* International support (non-latin character) and emoji support
+
+## Issues
+
+* Styles need serious work and overall UX is clunky
+* All data is loaded into JS memory, which means:
+* Large backups (>3,000 SMS) will freeze the UI until they are loaded
+* Loading specific conversations may be slow and freeze the UI
+* App breaks when using settings after loading data
+
+If you encounter other issues, please add the issues here: [https://github.com/devadvance/sms-backup-reader-2/issues](https://github.com/devadvance/sms-backup-reader-2/issues).
+
+## Roadmap (no timeline defined)
+
+* Export SMS to CSV or TXT
+* Support for loading MMS
+* Support for exporting media from MMS
+* More?
+
+## Note about emoji and text handing in this app (mostly for devs)
+
+SMS Backup & Restore saves emojis and other special characters in a very interesting way.
 
 Likely, it goes back to how characters are encoded in SMS.
 
@@ -11,34 +37,3 @@ Likely, it goes back to how characters are encoded in SMS.
 
 *Not actually ASCII or UTF-16. There are GSM semi-equivalents. Of course it's not easy.
 
-## Generated Docs
-
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24. 
-
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -3,6 +3,11 @@
     "version": "0.1.0",
     "license": "MIT",
     "angular-cli": {},
+    "repository" :
+    {
+        "type" : "git",
+        "url" : "https://github.com/devadvance/sms-backup-reader-2.git"
+    },
     "scripts": {
         "ng": "ng",
         "start": "ng serve",

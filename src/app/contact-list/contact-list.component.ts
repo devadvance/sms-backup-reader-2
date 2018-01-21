@@ -8,18 +8,22 @@ import { SmsStoreService }  from '../sms-store.service';
 @Component({
     selector: 'contact-list',
     templateUrl: './contact-list.component.html',
-    styleUrls: ['./contact-list.component.css']
+    styleUrls: ['./contact-list.component.css'],
 })
+
 export class ContactListComponent implements OnInit {
 
 	messagesLoaded: boolean;
     loadingSubscription: Subscription;
     contacts: Contact[];
     selectedContact: Contact;
+    numfilter: String
+
 
     constructor(private smsStoreService: SmsStoreService) { }
 
     ngOnInit() {
+        this.numfilter = '';
         this.loadingSubscription = this.smsStoreService.messagesLoaded$
         .subscribe(messagesLoaded => {
             this.messagesLoaded = messagesLoaded;

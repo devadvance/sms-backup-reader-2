@@ -1,6 +1,7 @@
 <div>
+    Filter Contacts: <input type="text" [(ngModel)]="numfilter" />
     <ul class="demo-list-two mdl-list">
-        <li class="mdl-list__item mdl-list__item--two-line contact-item"  *ngFor="let contact of contacts" (click)="showMessages(contact)">
+        <li class="mdl-list__item mdl-list__item--two-line contact-item"  *ngFor="let contact of contacts | contactSearchPipe: numfilter" (click)="showMessages(contact)">
             <span class="mdl-list__item-primary-content">
                 <i class="material-icons mdl-list__item-avatar">person</i>
                 <span>Address: {{contact.address}}</span>

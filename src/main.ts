@@ -8,5 +8,7 @@ import { AppModule } from './app/';
 if (environment.production) {
     enableProdMode();
 }
+declare var require: any;
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.log(err));

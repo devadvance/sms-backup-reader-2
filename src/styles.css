@@ -43,7 +43,12 @@ contact-list {
 	top:0;
 	bottom:0;
 }
-
+.mdl-list__item--two-line {
+    height: auto!important;
+}
+.mdl-list__item--two-line .mdl-list__item-primary-content {
+	   height: auto!important;
+}
 .message-sent {
   background: #FFF123;
   text-align: right;
@@ -53,3 +58,16 @@ contact-list {
   background: #DDD123;
   text-align: left;
 }
+
+.mms-received,.mms-sent {
+    height: auto!important;
+}
+li.mms-received > span,li.mms-sent > span
+{
+	height: auto!important;
+}
+
+img {
+	max-height: 40%;
+	max-width: 40%;
+}	

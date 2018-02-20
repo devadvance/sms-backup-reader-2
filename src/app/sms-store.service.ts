@@ -5,7 +5,7 @@ import { Message } from './message';
 import { Contact } from './contact';
 import { MESSAGES } from './mock-messages';
 
-import * as awesomePhone from 'awesome-phonenumber';
+import awesomePhone from 'awesome-phonenumber';
 
 @Injectable()
 export class SmsStoreService {
@@ -82,7 +82,11 @@ export class SmsStoreService {
                     mapEntry.push(message);
                 }
             }
-
+			//sort by timestamp
+			this.messageMap.forEach(( value: Message[], key: string) => {
+				value = value.sort((message1, message2) => message1.date.getTime() - message2.date.getTime());
+				this.messageMap.set(key, value);
+			});
             this.messageMap.forEach((value: Message[], key: String) => {
                 this.contacts.push({
                     address: key as string,

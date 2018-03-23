@@ -1,18 +1,18 @@
 {
-    "name": "sms-backup-reader-2",
+    "name": "sms-backup-reader",
     "version": "0.1.1",
     "license": "MIT",
     "angular-cli": {},
-    "repository" :
-    {
-        "type" : "git",
-        "url" : "https://github.com/devadvance/sms-backup-reader-2.git"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/devadvance/sms-backup-reader-2.git"
     },
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "lint": "tslint \"src/**/*.ts\"",
         "test": "ng test",
+        "build": "ng build --prod",
         "pree2e": "webdriver-manager update --standalone false --gecko false",
         "e2e": "protractor"
     },
@@ -27,15 +27,19 @@
         "@angular/platform-browser-dynamic": "^2.3.1",
         "@angular/router": "^3.3.1",
         "core-js": "^2.4.1",
+        "install": "^0.10.4",
+        "npm": "^5.7.1",
         "rxjs": "^5.0.1",
         "ts-helpers": "^1.1.1",
-        "zone.js": "^0.7.2"
+        "vcf": "^2.0.1",
+        "zone.js": "^0.7.2",
+        "awesome-phonenumber": "^2.2.3"
     },
     "devDependencies": {
         "@angular/compiler-cli": "^2.3.1",
         "@types/jasmine": "2.5.38",
         "@types/node": "^6.0.42",
-        "angular-cli": "1.0.0-beta.24",
+        "@angular/cli": "latest",
         "codelyzer": "~2.0.0-beta.1",
         "jasmine-core": "2.5.2",
         "jasmine-spec-reporter": "2.5.0",

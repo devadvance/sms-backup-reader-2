@@ -6,3 +6,8 @@
 	cursor: pointer;
 	cursor: hand;
 }
+
+.active-row{
+        background-color: #0099ff;
+}
+

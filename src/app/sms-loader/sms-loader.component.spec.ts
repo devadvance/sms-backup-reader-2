@@ -8,7 +8,7 @@ import { SmsLoaderComponent } from './sms-loader.component';
 describe('SmsLoaderComponent', () => {
     let component: SmsLoaderComponent;
     let fixture: ComponentFixture<SmsLoaderComponent>;
-
+	let filename : string;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ SmsLoaderComponent ]

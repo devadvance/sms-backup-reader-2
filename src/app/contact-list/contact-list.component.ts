@@ -37,6 +37,9 @@ export class ContactListComponent implements OnInit {
         this.smsStoreService.broadcastContactClicked(contact);
     }
 
+	isSelected(contact) {
+        return(this.selectedContact == contact);
+    }
     ngOnDestroy() {
         // prevent memory leak when component is destroyed
         this.loadingSubscription.unsubscribe();

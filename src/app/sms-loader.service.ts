@@ -85,17 +85,16 @@ export class SmsLoaderService {
 					}
 				}
                 this.messages.push({
-                    contact: contact,
-                    type: type,
-                    timestamp: mms.getAttribute('date'),
-                    date: new Date(parseInt(mms.getAttribute('date'))),
-                    body: body
-                });
-            }
-            resolve();
-        }
-
-    }).catch(this.handleError);
+						contact: contact,
+						type: type,
+						timestamp: mms.getAttribute('date'),
+						date: new Date(parseInt(mms.getAttribute('date'))),
+						body: body
+					});
+				}
+				resolve();
+			}
+		}).catch(this.handleError);
     }
 
 }

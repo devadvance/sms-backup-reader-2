@@ -1,9 +1,10 @@
-<div>
+<div >
     <ul class="demo-list-two mdl-list">
-        <li class="mdl-list__item mdl-list__item--two-line contact-item"  *ngFor="let contact of contacts" (click)="showMessages(contact)">
-            <span class="mdl-list__item-primary-content">
+        <li class="mdl-list__item mdl-list__item--two-line contact-item"  *ngFor="let contact of contacts" 
+        (click)="showMessages(contact)"  [ngClass]="{'active-row': contact == selectedContact}" >
+            <span class="mdl-list__item-primary-content" >
                 <i class="material-icons mdl-list__item-avatar">person</i>
-                <span>Address: {{contact.address}}</span>
+            <span>Address: {{contact.address}}<br/> {{contact.name}}</span>
                 <span class="mdl-list__item-sub-title">Messages: {{contact.messageCount}}</span>
             </span>
         </li>

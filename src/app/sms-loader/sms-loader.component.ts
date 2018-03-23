@@ -11,7 +11,7 @@ export class SmsLoaderComponent implements OnInit {
     @Output() onLoaded = new EventEmitter<boolean>();
     sampleText: String = 'not loaded';
     loaded: boolean = false;
-
+	filename : string ='';
     constructor(
         private smsLoaderService: SmsLoaderService,
         private smsStoreService: SmsStoreService
@@ -22,21 +22,18 @@ export class SmsLoaderComponent implements OnInit {
 
     fileChange(fileEvent: any): void {
         console.log(fileEvent.target.files);
+		console.log(this);
         var file: File;
         if (fileEvent.target.files && fileEvent.target.files.length >= 1) {
             file = fileEvent.target.files[0];
             this.smsLoaderService.loadSMSFile(file).then(result => {
                 this.sampleText = 'Loaded!';
-
                 this.onLoaded.emit(true);
                 this.loaded = true;
-                // for (let sms of result) {
-                    //   this.sampleText += sms.body;
-                    // }
-                });
+				this.filename = '';
+				console.log(this);
+			});
         }
-        //var file: File = input.files[0];
-        //this.smsLoaderService.loadSMSFile(file).then(result => this.sampleText = result);
     }
 
 }

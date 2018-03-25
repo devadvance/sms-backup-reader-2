@@ -52,7 +52,8 @@ export class SmsLoaderService {
             xmlDoc = parser.parseFromString(cleanedText, 'text/xml');
             for (let sms of xmlDoc.getElementsByTagName('sms')) {
                 this.messages.push({
-                    contactNumber: sms.getAttribute('address'),
+                    //contactNumber: sms.getAttribute('address'),
+                    contactAddress: sms.getAttribute('address'),
                     contactName: sms.getAttribute('contact_name'),
                     type: parseInt(sms.getAttribute('type')),
                     timestamp: sms.getAttribute('date'),
@@ -61,16 +62,16 @@ export class SmsLoaderService {
                 });
             }
 			for (let mms of xmlDoc.getElementsByTagName('mms')) {				
-				let contact:string = "";
+				let contactAddress:string = "";
 				let body:string ="";
 				let type:number = 3;
 				for (let addr of mms.getElementsByTagName('addr')) {
 					if ((addr.getAttribute('type') == "137") || 
-					    (contact == 'insert-address-token'))
+					    (contactAddress == 'insert-address-token'))
 					{
-						contact = addr.getAttribute('address');
+						contactAddress = addr.getAttribute('address');
 					}
-					if (contact == 	'insert-address-token')
+					if (contactAddress == 	'insert-address-token')
 					{
 						type = 4;
 					}
@@ -85,6 +86,7 @@ export class SmsLoaderService {
 						body = body + '<div>'+ part.getAttribute('text') + '<div/>';
 					}
 				}
+
                 this.messages.push(new Message(
 						contact,
 					    mms.getAttribute('date'),

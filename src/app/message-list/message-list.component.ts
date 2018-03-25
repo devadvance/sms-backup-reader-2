@@ -14,7 +14,7 @@ import { SmsStoreService }  from '../sms-store.service';
 export class MessageListComponent implements OnInit {
 
     messages: Message[];
-    messageMap: Map<String, Message[]>;
+    messageMap: Map<string, Message[]>;
 
     messagesLoaded: boolean;
     loadingSubscription: Subscription;

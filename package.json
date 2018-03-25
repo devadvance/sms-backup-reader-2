@@ -3,10 +3,9 @@
     "version": "0.1.1",
     "license": "MIT",
     "angular-cli": {},
-    "repository" :
-    {
-        "type" : "git",
-        "url" : "https://github.com/devadvance/sms-backup-reader-2.git"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/devadvance/sms-backup-reader-2.git"
     },
     "scripts": {
         "ng": "ng",
@@ -30,7 +29,7 @@
         "rxjs": "^5.0.1",
         "ts-helpers": "^1.1.1",
         "zone.js": "^0.7.2",
-        "awesome-phonenumber":"2.2.3"
+        "awesome-phonenumber": "2.2.3"
     },
     "devDependencies": {
         "@angular/compiler-cli": "^2.3.1",

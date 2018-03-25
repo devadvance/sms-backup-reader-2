@@ -9,7 +9,7 @@ import { SmsStoreService } from '../sms-store.service';
 })
 export class SmsLoaderComponent implements OnInit {
     @Output() onLoaded = new EventEmitter<boolean>();
-    sampleText: String = 'not loaded';
+    sampleText: string = 'not loaded';
     loaded: boolean = false;
 
     constructor(

@@ -17,7 +17,7 @@ export class ContactListComponent implements OnInit {
     loadingSubscription: Subscription;
     contacts: Contact[];
     selectedContact: Contact;
-    numfilter: String
+    numfilter: string
 
 
     constructor(private smsStoreService: SmsStoreService) { }

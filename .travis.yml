@@ -10,6 +10,10 @@ before_script:
 script:
   - ng build --prod --bh /sms-backup-reader-2/
 
+# Workaround for GH Pages: copy index.html to 404.html
+before_deploy:
+  - cp dist/index.html dist/404.html
+
 deploy:
   provider: pages
   local-dir: dist

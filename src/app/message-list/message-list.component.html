@@ -2,9 +2,9 @@
     <ul class="message-list-ul mdl-list">
         <li *ngFor="let message of messages"
         class="mdl-list__item mdl-list__item--two-line"
-        [ngClass]="{'message-sent': message.type == 2, 'message-received': message.type == 1}">
+        [ngClass]="{'message-sent': message.type == 2, 'message-received': message.type == 1, 'mms-received': message.type == 3,'mms-sent': message.type == 4}">
         <span class="mdl-list__item-primary-content">
-            <span>{{message.body}}</span>
+            <span [innerHTML]="message.body"></span>
             <span class="mdl-list__item-sub-title">{{message.type | messageType}}: {{message.date}}</span>
         </span>
     </li>

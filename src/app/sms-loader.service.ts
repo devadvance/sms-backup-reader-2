@@ -60,6 +60,39 @@ export class SmsLoaderService {
                     body: sms.getAttribute('body')
                 });
             }
+			for (let mms of xmlDoc.getElementsByTagName('mms')) {				
+				let contact:string = "";
+				let body:string ="";
+				let type:number = 3;
+				for (let addr of mms.getElementsByTagName('addr')) {
+					if ((addr.getAttribute('type') == "137") || 
+					    (contact == 'insert-address-token'))
+					{
+						contact = addr.getAttribute('address');
+					}
+					if (contact == 	'insert-address-token')
+					{
+						type = 4;
+					}
+				}
+				for (let part of mms.getElementsByTagName('part')) {
+					if (part.getAttribute('ct') == "image/jpeg")
+					{
+						body = body + '<img style="vertical-align:top" src="data:image/jpeg;base64,' +  part.getAttribute('data') + '"/>';
+					}
+					if (part.getAttribute('ct') == "text/plain")
+					{
+						body = body + '<div>'+ part.getAttribute('text') + '<div/>';
+					}
+				}
+                this.messages.push({
+                    contact: contact,
+                    type: type,
+                    timestamp: mms.getAttribute('date'),
+                    date: new Date(parseInt(mms.getAttribute('date'))),
+                    body: body
+                });
+            }
             resolve();
         }
 

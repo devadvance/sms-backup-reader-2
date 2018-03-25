@@ -5,7 +5,7 @@ import { MessageListComponent } from './message-list/message-list.component';
 import { SmsStoreService } from './sms-store.service';
 import { SmsLoaderService } from './sms-loader.service';
 
-const { version: appVersion } = require('../../package.json');
+//const { version: appVersion } = require('../../package.json');
 
 @Component({
     selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent {
     private appVersion;
 
     constructor(private smsStoreService: SmsStoreService, private smsLoaderService: SmsLoaderService) {
-        this.appVersion = appVersion;
+        //this.appVersion = appVersion;
     }
 
     onLoaded(loaded: boolean) {

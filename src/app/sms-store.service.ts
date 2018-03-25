@@ -27,7 +27,7 @@ export class SmsStoreService {
         return Promise.resolve(this.messagesLoaded);
     }
 
-    changeCountry(countryCode: string): Promise<void> {
+    changeCountry(countryCode: string): Promise<any> {
         return new Promise((resolve, reject) => {
             this.countryCode = countryCode;
             resolve();
@@ -59,7 +59,7 @@ export class SmsStoreService {
         this._contactClickedSource.next(contactClicked);
     }
 
-    loadAllMessages(messages: Message[]): Promise<void> {
+    loadAllMessages(messages: Message[]): Promise<any> {
         this.messageMap = new Map();
         this.contacts = new Array<Contact>();
         return new Promise((resolve, reject) => {
@@ -100,7 +100,7 @@ export class SmsStoreService {
         });
     }
 
-    clearAllMessages(): Promise<void> {
+    clearAllMessages(): Promise<any> {
         return new Promise((resolve, reject) => {
             this.messageMap = new Map();
             this.messages = new Array<Message>();
@@ -139,11 +139,11 @@ export class SmsStoreService {
 
 
 // Add a message for a specific contact
-//addMessage(contactId: string, message: Message): Promise<void> {
+//addMessage(contactId: string, message: Message): Promise<any> {
 
     //}
 
-    //loadMessages(messages: Message[]): Promise<void> {
+    //loadMessages(messages: Message[]): Promise<any> {
 
         //}
 

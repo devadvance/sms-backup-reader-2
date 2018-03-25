@@ -38,4 +38,3 @@ Likely, it goes back to how characters are encoded in SMS.
 * If even one of the characters in the SMS is beyond the base character set, then the entire message is stored as UTF-16*
 
 *Not actually ASCII or UTF-16. There are GSM semi-equivalents. Of course it's not easy.
-

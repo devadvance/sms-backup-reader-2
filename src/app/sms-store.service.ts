@@ -13,8 +13,6 @@ export class SmsStoreService {
     contacts: Contact[];
     messageMap: Map<String, Message[]>;
     countryCode: string;
-    
-
     messagesLoaded: boolean;
 
     constructor() { 
@@ -31,7 +29,9 @@ export class SmsStoreService {
 			if (this.countryCode != countryCode)
 			{
 				this.countryCode = countryCode;
-				this.loadAllMessages(this.messages);
+				if (this.messagesLoaded) {
+					this.loadAllMessages(this.messages);
+				}
 			}
             resolve();
         });

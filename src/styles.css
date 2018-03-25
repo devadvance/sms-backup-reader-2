@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+input[type="file"] {
+	display: none;
+}
+
+country-select {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+message-list {
+
+}
+
+contact-list {
+
+}
+
+.page-content {
+	overflow: hidden;
+	width: 100%;
+}
+
+.contacts {
+  overflow-y: scroll;
+	background: #f5f2f0;
+	position: absolute;
+	width: 30%;
+	/*padding: 10px;*/
+	left:0;
+	top:0;
+	bottom:0;
+}
+
+.messages {
+  overflow-y: scroll;
+	/*background: #fff123;*/
+	position: absolute;
+	width: 70%;
+	/*padding: 10px;*/
+	right:0;
+	top:0;
+	bottom:0;
+}
+.mdl-list__item--two-line {
+    height: auto!important;
+}
+.mdl-list__item--two-line .mdl-list__item-primary-content {
+	   height: auto!important;
+}
+.message-sent {
+  background: #FFF123;
+  text-align: right;
+}
+
+.message-received {
+  background: #DDD123;
+  text-align: left;
+}
+
+
+.mms-received,.mms-sent {
+    height: auto!important;
+}
+li.mms-received > span,li.mms-sent > span
+{
+	height: auto!important;
+}
+
+img {
+	max-height: 40%;
+	max-width: 40%;
+}	
+
+.selected-contact{
+	background:rgb(76, 76, 151);
+	color: #BBB
+}
+

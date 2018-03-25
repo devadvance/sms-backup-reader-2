@@ -4,17 +4,17 @@ language: node_js
 node_js:
   - "8.10"
 
-branches:
-  only:
-    - master
-
 before_script:
   - npm install -g @angular/cli
 
 script:
   - ng build --prod
 
-notifications:
-  email:
-    on_failure: change
-    on_success: change
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  on:
+    repo: devadvance/sms-backup-reader-2
+    tags: true

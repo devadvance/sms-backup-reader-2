@@ -52,7 +52,8 @@ export class SmsLoaderService {
             xmlDoc = parser.parseFromString(cleanedText, 'text/xml');
             for (let sms of xmlDoc.getElementsByTagName('sms')) {
                 this.messages.push({
-                    contact: sms.getAttribute('address'),
+                    contactNumber: sms.getAttribute('address'),
+                    contactName: sms.getAttribute('contact_name'),
                     type: parseInt(sms.getAttribute('type')),
                     timestamp: sms.getAttribute('date'),
                     date: new Date(parseInt(sms.getAttribute('date'))),

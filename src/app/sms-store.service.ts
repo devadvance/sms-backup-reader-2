@@ -11,7 +11,7 @@ export class SmsStoreService {
 
     messages: Message[];
     contacts: Contact[];
-    messageMap: Map<String, Message[]>;
+    messageMap: Map<string, Message[]>;
     countryCode: string;
     
 
@@ -89,7 +89,7 @@ export class SmsStoreService {
 				value = value.sort((message1, message2) => message1.date.getTime() - message2.date.getTime());
 				this.messageMap.set(key, value);
 			});
-            this.messageMap.forEach((value: Message[], key: String) => {
+            this.messageMap.forEach((value: Message[], key: string) => {
                 let contactName = value[0].contactName;
                 this.contacts.push({
                     name: (contactName != '(Unknown)') ? contactName : null,
@@ -113,7 +113,7 @@ export class SmsStoreService {
     }
 
     // Get all messages for all contacts
-    getAllMessages(): Promise<Map<String, Message[]>> {
+    getAllMessages(): Promise<Map<string, Message[]>> {
         return new Promise((resolve, reject) => {
             resolve(this.messageMap);
         });
@@ -157,6 +157,7 @@ export class SmsStoreService {
 		});
 	}
 }
+
 
 
 

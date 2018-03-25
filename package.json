@@ -34,7 +34,9 @@
 
         "vcf": "^2.0.1",
         "zone.js": "^0.7.2",
-        "awesome-phonenumber": "^2.2.3"
+
+        "awesome-phonenumber": "2.2.3"
+
     },
     "devDependencies": {
         "@angular/compiler-cli": "^2.3.1",

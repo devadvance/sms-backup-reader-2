@@ -86,19 +86,19 @@ export class SmsLoaderService {
 						body = body + '<div>'+ part.getAttribute('text') + '<div/>';
 					}
 				}
+                this.messages.push({
+                    contactAddress: contactAddress,
+                    contactName: mms.getAttribute('contact_name'),
+                    type: type,
+                    timestamp: mms.getAttribute('date'),
+                    date: new Date(parseInt(mms.getAttribute('date'))),
+                    body: body
+                });
+            }
+            resolve();
+        }
 
-                this.messages.push(new Message(
-						contact,
-					    mms.getAttribute('date'),
-						type,
-						body,
-						'',
-						new Date(parseInt(mms.getAttribute('date')))
-					));
-				}
-				resolve();
-			}
-		}).catch(this.handleError);
+    }).catch(this.handleError);
     }
 
 }

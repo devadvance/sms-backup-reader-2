@@ -53,3 +53,8 @@ contact-list {
   background: #DDD123;
   text-align: left;
 }
+
+.selected-contact{
+	background:rgb(76, 76, 151);
+	color: #BBB
+}

@@ -85,13 +85,14 @@ export class SmsLoaderService {
 						body = body + '<div>'+ part.getAttribute('text') + '<div/>';
 					}
 				}
-                this.messages.push({
-						contact: contact,
-						type: type,
-						timestamp: mms.getAttribute('date'),
-						date: new Date(parseInt(mms.getAttribute('date'))),
-						body: body
-					});
+                this.messages.push(new Message(
+						contact,
+					    mms.getAttribute('date'),
+						type,
+						body,
+						'',
+						new Date(parseInt(mms.getAttribute('date')))
+					));
 				}
 				resolve();
 			}

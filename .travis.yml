@@ -8,7 +8,7 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng build --prod
+  - ng build --prod --bh /sms-backup-reader-2/
 
 deploy:
   provider: pages

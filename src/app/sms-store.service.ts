@@ -68,16 +68,16 @@ export class SmsStoreService {
 
             for (let message of messages) {
                 let mapEntry;
-                let phone = new awesomePhone(message.contactNumber, this.countryCode);
-                let contactNum: string = phone.getNumber('international');  
-                if (!contactNum) {
-                    contactNum = message.contactNumber;
+                let phone = new awesomePhone(message.contactAddress, this.countryCode);
+                let contactAddress: string = phone.getNumber('international');  
+                if (!contactAddress) {
+                    contactAddress = message.contactAddress;
                 }
-                //console.log(`contact: ${contactNum}`);
-                if(!(mapEntry = this.messageMap.get(contactNum))) {
+                //console.log(`contact: ${contactAddress}`);
+                if(!(mapEntry = this.messageMap.get(contactAddress))) {
                     mapEntry = new Array<Message>();
                     mapEntry.push(message);
-                    this.messageMap.set(contactNum, mapEntry);
+                    this.messageMap.set(contactAddress, mapEntry);
                 } else {
                     mapEntry.push(message);
                 }

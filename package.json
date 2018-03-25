@@ -31,6 +31,7 @@
         "npm": "^5.7.1",
         "rxjs": "^5.0.1",
         "ts-helpers": "^1.1.1",
+
         "vcf": "^2.0.1",
         "zone.js": "^0.7.2",
         "awesome-phonenumber": "^2.2.3"

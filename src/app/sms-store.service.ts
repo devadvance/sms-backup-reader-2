@@ -3,7 +3,6 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 import { Message } from './message';
 import { Contact } from './contact';
-import { MESSAGES } from './mock-messages';
 
 import awesomePhone from 'awesome-phonenumber';
 
@@ -29,7 +28,11 @@ export class SmsStoreService {
 
     changeCountry(countryCode: string): Promise<void> {
         return new Promise((resolve, reject) => {
-            this.countryCode = countryCode;
+			if (this.countryCode != countryCode)
+			{
+				this.countryCode = countryCode;
+				this.loadAllMessages(this.messages);
+			}
             resolve();
         });
     }
@@ -60,12 +63,11 @@ export class SmsStoreService {
     }
 
     loadAllMessages(messages: Message[]): Promise<void> {
+		this.messages = messages;
         this.messageMap = new Map();
         this.contacts = new Array<Contact>();
         return new Promise((resolve, reject) => {
             this.messages = messages;
-
-
             for (let message of messages) {
                 let mapEntry;
                 let phone = new awesomePhone(message.contactAddress, this.countryCode);
@@ -127,23 +129,35 @@ export class SmsStoreService {
     // Get the messages for a specific contact
     getMessages(contactId: string): Promise<Message[]> {
         let returnMessages: Message[];
-
         return new Promise((resolve, reject) => {
-
             returnMessages = this.messageMap.get(contactId);
-
             resolve(returnMessages);
         });
     }
+	
+	fillContactNames(contactMap: Map<string, string>): Promise<void> {
+		return new Promise((resolve, reject) => {
+			//console.log(this.contacts);
+			this.contacts.forEach(function(contact)
+			{
+				let name: string;
+				console.log(contact.address);
+				name = contactMap.get(contact.address);
+				if (name)
+				{
+					contact.name = name;
+					console.log(contact.name);
+				}
+				else
+				{
+					console.log("not found");
+				}
+			});
+			resolve();
+		});
+	}
 }
 
 
-// Add a message for a specific contact
-//addMessage(contactId: string, message: Message): Promise<void> {
 
-    //}
-
-    //loadMessages(messages: Message[]): Promise<void> {
-
-        //}
 

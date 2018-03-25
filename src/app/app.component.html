@@ -8,7 +8,8 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <sms-loader (onLoaded)="onLoaded($event)"></sms-loader>
+                <sms-loader (onLoaded)="onSmsLoaded($event)"></sms-loader>
+				<vcf-loader (onLoaded)="onVcfLoaded($event)"></vcf-loader>
                 <button class="mdl-button mdl-js-button mdl-button--accent" style="float:right;" routerLink="/settings" routerLinkActive="active">
                     Settings
                 </button>
@@ -18,7 +19,8 @@
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Menu</span>
         <nav class="mdl-navigation">
-            <sms-loader (onLoaded)="onLoaded($event)"></sms-loader>
+			<vcf-loader (onLoaded)="onVcfLoaded($event)"></vcf-loader>
+            <sms-loader (onLoaded)="onSmsLoaded($event)"></sms-loader>
             <a class="mdl-navigation__link" routerLink="/settings" routerLinkActive="active">Settings</a>
         </nav>
     </div>

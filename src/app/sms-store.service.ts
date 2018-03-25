@@ -70,10 +70,10 @@ export class SmsStoreService {
             this.messages = messages;
             for (let message of messages) {
                 let mapEntry;
-                let phone = new awesomePhone(message.contact, this.countryCode);
+                let phone = new awesomePhone(message.contactNumber, this.countryCode);
                 let contactNum: string = phone.getNumber('international');  
                 if (!contactNum) {
-                    contactNum = message.contact;
+                    contactNum = message.contactNumber;
                 }
                 //console.log(`contact: ${contactNum}`);
                 if(!(mapEntry = this.messageMap.get(contactNum))) {
@@ -90,7 +90,9 @@ export class SmsStoreService {
 				this.messageMap.set(key, value);
 			});
             this.messageMap.forEach((value: Message[], key: String) => {
+                let contactName = value[0].contactName;
                 this.contacts.push({
+                    name: (contactName != '(Unknown)') ? contactName : null,
                     address: key as string,
                     messageCount: value.length
                 });

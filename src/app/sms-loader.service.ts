@@ -87,7 +87,6 @@ export class SmsLoaderService {
 					}
 				}
                 this.messages.push({
-
                     contactAddress: contactAddress,
                     contactName: mms.getAttribute('contact_name'),
                     type: type,
@@ -99,6 +98,7 @@ export class SmsLoaderService {
             resolve();
         }
 
+ 
     }).catch(this.handleError);
     }
 

@@ -1,5 +1,7 @@
 # SMS Backup Reader 2
 
+[![Build Status](https://travis-ci.org/devadvance/sms-backup-reader-2.svg?branch=master)](https://travis-ci.org/devadvance/sms-backup-reader-2)
+
 This is an Angular-based web app designed to read the XML backup files produced by the Android app SMS Backup & Restore by Ritesh. It is designed to work in modern browsers, including Chrome, Firefox, Edge, and Safari. This app works locally and your SMS data **does not** leave your machine.
 
 This app is currently in alpha.

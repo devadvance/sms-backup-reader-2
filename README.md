@@ -39,4 +39,8 @@ Likely, it goes back to how characters are encoded in SMS.
 * If all characters in the SMS are English + a few extra, then it essentially stores them all as ASCII*
 * If even one of the characters in the SMS is beyond the base character set, then the entire message is stored as UTF-16*
 
-*Not actually ASCII or UTF-16. There are GSM semi-equivalents. Of course it's not easy.
+\*Not actually ASCII or UTF-16. There are GSM semi-equivalents. Of course it's not easy.
+
+## License
+
+SMS Backup Reader 2 is made available under the MIT license. See the LICENSE file for details.

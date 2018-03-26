@@ -8,7 +8,7 @@ import { SmsLoaderService } from './sms-loader.service';
 import { VcfLoaderService } from './vcf-loader.service';
 import { VcfStoreService } from './vcf-store.service';
 
-//const { version: appVersion } = require('../../package.json');
+const { version: appVersion } = require('../../package.json');
 
 @Component({
     selector: 'app-root',

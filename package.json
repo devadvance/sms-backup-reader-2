@@ -1,5 +1,4 @@
 {
-
   "name": "sms-back-reader-2",
   "version": "0.1.0",
   "license": "MIT",
@@ -25,6 +24,8 @@
     "awesome-phonenumber": "^2.2.5",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
+    "ts-helpers": "^1.1.1",
+    "vcf": "^2.0.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
@@ -45,8 +46,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3",
-    "vcf": "^2.0.1"
+    "typescript": "~2.5.3"
   }
-
 }

@@ -1,0 +1,25 @@
+#.travis.yml
+
+language: node_js
+node_js:
+  - "8.10"
+
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  - ng build --prod --bh /sms-backup-reader-2/
+
+# Workaround for GH Pages: copy index.html to 404.html
+before_deploy:
+  - cp dist/index.html dist/404.html
+
+deploy:
+  provider: pages
+  local-dir: dist
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  on:
+    repo: devadvance/sms-backup-reader-2
+    tags: true

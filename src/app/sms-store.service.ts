@@ -11,7 +11,7 @@ export class SmsStoreService {
 
     messages: Message[];
     contacts: Contact[];
-    messageMap: Map<String, Message[]>;
+    messageMap: Map<string, Message[]>;
     countryCode: string;
     
 
@@ -26,7 +26,7 @@ export class SmsStoreService {
         return Promise.resolve(this.messagesLoaded);
     }
 
-    changeCountry(countryCode: string): Promise<void> {
+    changeCountry(countryCode: string): Promise<any> {
         return new Promise((resolve, reject) => {
 			if (this.countryCode != countryCode)
 			{
@@ -62,6 +62,7 @@ export class SmsStoreService {
         this._contactClickedSource.next(contactClicked);
     }
 
+
     loadAllMessages(messages: Message[]): Promise<void> {
 		this.messages = messages;
         this.messageMap = new Map();
@@ -70,16 +71,16 @@ export class SmsStoreService {
             this.messages = messages;
             for (let message of messages) {
                 let mapEntry;
-                let phone = new awesomePhone(message.contactNumber, this.countryCode);
-                let contactNum: string = phone.getNumber('international');  
-                if (!contactNum) {
-                    contactNum = message.contactNumber;
+                let phone = new awesomePhone(message.contactAddress, this.countryCode);
+                let contactAddress: string = phone.getNumber('international');  
+                if (!contactAddress) {
+                    contactAddress = message.contactAddress;
                 }
-                //console.log(`contact: ${contactNum}`);
-                if(!(mapEntry = this.messageMap.get(contactNum))) {
+                //console.log(`contact: ${contactAddress}`);
+                if(!(mapEntry = this.messageMap.get(contactAddress))) {
                     mapEntry = new Array<Message>();
                     mapEntry.push(message);
-                    this.messageMap.set(contactNum, mapEntry);
+                    this.messageMap.set(contactAddress, mapEntry);
                 } else {
                     mapEntry.push(message);
                 }
@@ -89,7 +90,7 @@ export class SmsStoreService {
 				value = value.sort((message1, message2) => message1.date.getTime() - message2.date.getTime());
 				this.messageMap.set(key, value);
 			});
-            this.messageMap.forEach((value: Message[], key: String) => {
+            this.messageMap.forEach((value: Message[], key: string) => {
                 let contactName = value[0].contactName;
                 this.contacts.push({
                     name: (contactName != '(Unknown)') ? contactName : null,
@@ -102,7 +103,7 @@ export class SmsStoreService {
         });
     }
 
-    clearAllMessages(): Promise<void> {
+    clearAllMessages(): Promise<any> {
         return new Promise((resolve, reject) => {
             this.messageMap = new Map();
             this.messages = new Array<Message>();
@@ -113,7 +114,7 @@ export class SmsStoreService {
     }
 
     // Get all messages for all contacts
-    getAllMessages(): Promise<Map<String, Message[]>> {
+    getAllMessages(): Promise<Map<string, Message[]>> {
         return new Promise((resolve, reject) => {
             resolve(this.messageMap);
         });

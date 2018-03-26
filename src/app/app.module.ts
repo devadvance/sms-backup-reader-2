@@ -37,7 +37,7 @@ pathMatch: 'full'
     MessageTypePipe,
     MainComponent,
     SettingsComponent,
-    VcfLoaderComponent
+    VcfLoaderComponent,
     ContactSearchPipe,
     ],
     imports: [

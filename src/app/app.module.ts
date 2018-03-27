@@ -18,7 +18,7 @@ import { MessageTypePipe } from './message-type.pipe';
 import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
 import { VcfLoaderComponent } from './vcf-loader/vcf-loader.component';
-
+import {ContactSearchPipe} from './components/pipes/contact-search-pipe';
 const appRoutes: Routes = [
 { path: 'main', component: MainComponent },
 { path: 'settings', component: SettingsComponent },
@@ -37,7 +37,8 @@ pathMatch: 'full'
     MessageTypePipe,
     MainComponent,
     SettingsComponent,
-    VcfLoaderComponent
+    VcfLoaderComponent,
+    ContactSearchPipe,
     ],
     imports: [
     BrowserModule,

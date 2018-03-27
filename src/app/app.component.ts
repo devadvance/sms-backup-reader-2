@@ -23,6 +23,7 @@ export class AppComponent implements OnInit  {
     private appVersion;	
 	country: string = "US";
 
+
     constructor(private smsStoreService: SmsStoreService,
 				private smsLoaderService: SmsLoaderService,
 				private vcfLoaderService: VcfLoaderService,

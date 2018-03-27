@@ -59,6 +59,7 @@ contact-list {
   text-align: left;
 }
 
+
 .mms-received,.mms-sent {
     height: auto!important;
 }
@@ -71,3 +72,9 @@ img {
 	max-height: 40%;
 	max-width: 40%;
 }	
+
+.selected-contact{
+	background:rgb(76, 76, 151);
+	color: #BBB
+}
+

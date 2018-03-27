@@ -1,5 +1,7 @@
 # SMS Backup Reader 2
 
+[![Build Status](https://travis-ci.org/devadvance/sms-backup-reader-2.svg?branch=master)](https://travis-ci.org/devadvance/sms-backup-reader-2)
+
 This is an Angular-based web app designed to read the XML backup files produced by the Android app SMS Backup & Restore by Ritesh. It is designed to work in modern browsers, including Chrome, Firefox, Edge, and Safari. This app works locally and your SMS data **does not** leave your machine.
 
 This app is currently in alpha.
@@ -37,5 +39,8 @@ Likely, it goes back to how characters are encoded in SMS.
 * If all characters in the SMS are English + a few extra, then it essentially stores them all as ASCII*
 * If even one of the characters in the SMS is beyond the base character set, then the entire message is stored as UTF-16*
 
-*Not actually ASCII or UTF-16. There are GSM semi-equivalents. Of course it's not easy.
+\*Not actually ASCII or UTF-16. There are GSM semi-equivalents. Of course it's not easy.
 
+## License
+
+SMS Backup Reader 2 is made available under the MIT license. See the LICENSE file for details.

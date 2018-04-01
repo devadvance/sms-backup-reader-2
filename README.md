@@ -12,6 +12,8 @@ This app is currently in alpha.
 
 * Load SMS backup files produced by and Android app SMS Backup & Restore by Ritesh
 * International support (non-latin character) and emoji support
+* MSS support (thanks to JLTRY)
+* VCF support (thanks to JLTRY)
 
 ## Issues
 
@@ -26,7 +28,6 @@ If you encounter other issues, please add the issues here: [https://github.com/d
 ## Roadmap (no timeline defined)
 
 * Export SMS to CSV or TXT
-* Support for loading MMS
 * Support for exporting media from MMS
 * More?
 

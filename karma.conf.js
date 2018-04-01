@@ -6,6 +6,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
+
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
@@ -30,4 +31,5 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false
   });
+
 };

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SmsStoreService }  from '../sms-store.service';
+import { VcfStoreService }  from '../vcf-store.service';
 
 @Component({
     selector: 'country-select',
@@ -11,7 +12,8 @@ export class CountrySelectComponent implements OnInit {
     countries: Country[];
     selectedItem: string;
 
-    constructor(private smsStoreService: SmsStoreService) { }
+    constructor(private smsStoreService: SmsStoreService,
+				private vcfStoreService: VcfStoreService) { }
 
     ngOnInit() {
         this.countries = [{ "value": "AF", "label": "Afghanistan" },
@@ -271,7 +273,12 @@ export class CountrySelectComponent implements OnInit {
 
     changeCountry(selectEvent: any): void {
         console.log(`Country selected: ${selectEvent.target.value}`);
-        this.smsStoreService.changeCountry(selectEvent.target.value);
+        this.vcfStoreService.changeCountry(selectEvent.target.value);
+		this.smsStoreService.changeCountry(selectEvent.target.value);
+		this.vcfStoreService.getAllContacts().then(contactsMap => {
+			this.smsStoreService.fillContactNames(contactsMap);
+			this.smsStoreService.broadcastMessagesLoaded(true);	
+		});
     }
 
 }

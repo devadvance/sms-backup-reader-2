@@ -4,7 +4,8 @@
     </div>
 
     <div class="messages">
-        <p *ngIf="!messagesLoaded">{{messagesPlaceholder}} <br /><br />{{countryCodePlaceholder}}</p>
+        <p *ngIf="!messagesLoaded && !messagesProcessing">{{messagesPlaceholder}} <br /><br />{{countryCodePlaceholder}}</p>
+        <div *ngIf="messagesProcessing"><br /><h2>Please be patient. Messages are loading!</h2><br /></div>
         <message-list></message-list>
     </div>
 </div>

@@ -17,6 +17,8 @@ export class MainComponent implements OnInit {
     contactsPlaceholder: string;
     countryCodePlaceholder: string;
     messagesLoaded: boolean;
+    messagesProcessing: boolean;
+    processingSubscription: Subscription;
     loadingSubscription: Subscription;
 
     constructor(private smsStoreService: SmsStoreService, private smsLoaderService: SmsLoaderService) {
@@ -31,6 +33,14 @@ export class MainComponent implements OnInit {
             this.messagesLoaded = messagesLoaded;
             return;
         });
+
+        this.messagesProcessing = false;
+        this.processingSubscription = this.smsStoreService.messagesProcessing$
+        .subscribe(messagesProcessing => {
+            this.messagesProcessing = messagesProcessing;
+            return;
+        });
+
     }
 
 }

@@ -21,12 +21,15 @@ export class SmsLoaderComponent implements OnInit {
     }
 
     fileChange(fileEvent: any): void {
+        console.log('Inside sms-loader:fileChange');
         console.log(fileEvent.target.files);
 		console.log(this);
         var file: File;
         if (fileEvent.target.files && fileEvent.target.files.length >= 1) {
             file = fileEvent.target.files[0];
-            this.smsLoaderService.loadSMSFile(file).then(result => {
+            //this.smsLoaderService.loadSMSFile(file).then(result => {
+            this.smsStoreService.loadBackupFile(file).then(result => {
+                console.log('Inside sms-loader:fileChange:callback');
                 this.sampleText = 'Loaded!';
                 this.onLoaded.emit(true);
                 this.loaded = true;

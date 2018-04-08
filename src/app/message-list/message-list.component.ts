@@ -35,9 +35,9 @@ export class MessageListComponent implements OnInit {
         .subscribe(contact => {
             this.selectedContact = contact;
             if (contact) {
-                this.messages = this.messageMap.get(contact.address);
+                //this.messages = this.messageMap.get(contact.address);
+                this.getContactMessages(contact.address).then(messages => { this.messages = messages });
             }
-            return;
         });
     }
 
@@ -51,6 +51,10 @@ export class MessageListComponent implements OnInit {
         this.smsStoreService.getAllMessages().then(messageMap => {
             this.messageMap = messageMap;
         });
+    }
+
+    getContactMessages(contactAddress: string): Promise<Message[]> {
+        return this.smsStoreService.getContactMessages(contactAddress);
     }
 
     showMessages(contactId: string): void {

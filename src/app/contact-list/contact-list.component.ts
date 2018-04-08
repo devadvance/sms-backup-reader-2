@@ -26,9 +26,13 @@ export class ContactListComponent implements OnInit {
         this.numfilter = '';
         this.loadingSubscription = this.smsStoreService.messagesLoaded$
         .subscribe(messagesLoaded => {
-            this.messagesLoaded = messagesLoaded;
-            this.getAllContacts();
-            return;
+            if (messagesLoaded) {
+                this.messagesLoaded = messagesLoaded;
+                this.getAllContacts();
+                return;
+            } else {
+                return;
+            }
         });
     }
 

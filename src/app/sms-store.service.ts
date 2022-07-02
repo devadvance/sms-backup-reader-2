@@ -1,40 +1,39 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {BehaviorSubject} from 'rxjs';
+import awesomePhone from 'awesome-phonenumber';
 
 import { Message } from './message';
 import { Contact } from './contact';
 
-import awesomePhone from 'awesome-phonenumber';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SmsStoreService {
 
-    messages: Message[];
-    contacts: Contact[];
-    messageMap: Map<string, Message[]>;
-    countryCode: string;
-    messagesLoaded: boolean;
+    messages: Message[] =[];
+    contacts: Contact[] =[];
+    messageMap: Map<string, Message[]> = new Map();
+    countryCode: string = 'US';
+    messagesLoaded: boolean = false;
 
     constructor() { 
         this.messagesLoaded = false;
         this.countryCode = 'US';
     }
-
     areMessagesLoaded(): Promise<boolean> {
         return Promise.resolve(this.messagesLoaded);
     }
-
     changeCountry(countryCode: string): Promise<any> {
-        return new Promise((resolve, reject) => {
-			if (this.countryCode != countryCode)
-			{
-				this.countryCode = countryCode;
-				if (this.messagesLoaded) {
-					this.loadAllMessages(this.messages);
-				}
-			}
-            resolve();
-        });
+        return new Promise<void>((resolve, reject) => {
+        if (this.countryCode != countryCode)
+        {
+            this.countryCode = countryCode;
+            if (this.messagesLoaded) {
+                this.loadAllMessages(this.messages);
+            }
+        }
+        resolve();
+       });
     }
 
     getCountry(): Promise<string> {
@@ -42,7 +41,6 @@ export class SmsStoreService {
             resolve(this.countryCode);
         });
     }
-
     //http://stackoverflow.com/questions/34376854/delegation-eventemitter-or-observable-in-angular2/35568924#35568924
     // Observable source
     private _messagesLoadedSource = new BehaviorSubject<boolean>(false);
@@ -54,56 +52,54 @@ export class SmsStoreService {
     }
 
     // Observable source
-    private _contactClickedSource = new BehaviorSubject<Contact>(null);
+    private _contactClickedSource = new BehaviorSubject<Contact>(new Contact("", 0, ""));
     // Observable stream
     contactClicked$ = this._contactClickedSource.asObservable();
     // Service command
     broadcastContactClicked(contactClicked: Contact) {
         this._contactClickedSource.next(contactClicked);
     }
-
-
-    loadAllMessages(messages: Message[]): Promise<void> {
-		this.messages = messages;
-        this.messageMap = new Map();
-        this.contacts = new Array<Contact>();
-        return new Promise((resolve, reject) => {
-            this.messages = messages;
-            for (let message of messages) {
-                let mapEntry;
-                let phone = new awesomePhone(message.contactAddress, this.countryCode);
-                let contactAddress: string = phone.getNumber('international');  
-                if (!contactAddress) {
-                    contactAddress = message.contactAddress;
-                }
-                //console.log(`contact: ${contactAddress}`);
-                if(!(mapEntry = this.messageMap.get(contactAddress))) {
-                    mapEntry = new Array<Message>();
-                    mapEntry.push(message);
-                    this.messageMap.set(contactAddress, mapEntry);
-                } else {
-                    mapEntry.push(message);
-                }
-            }
+    loadAllMessages(messages: Message[]|unknown): Promise<void> {
+			var realmessages = <Message[]>messages!;
+			this.messages = <Message[]>messages!;
+			this.messageMap = new Map();
+			this.contacts = new Array<Contact>();
+			return new Promise((resolve, reject) => {
+					this.messages = <Message[]>realmessages;
+					for (let message of realmessages) {
+							let mapEntry;
+							let phone = new awesomePhone(message.contactAddress, this.countryCode);
+							let contactAddress: string = phone.getNumber('international');  
+							if (!contactAddress) {
+									contactAddress = message.contactAddress;
+							}
+							//console.log(`contact: ${contactAddress}`);
+							if(!(mapEntry = this.messageMap.get(contactAddress))) {
+									mapEntry = new Array<Message>();
+									mapEntry.push(message);
+									this.messageMap.set(contactAddress, mapEntry);
+							} else {
+									mapEntry.push(message);
+							}
+					}
 			//sort by timestamp
 			this.messageMap.forEach(( value: Message[], key: string) => {
-				value = value.sort((message1, message2) => message1.date.getTime() - message2.date.getTime());
-				this.messageMap.set(key, value);
-			});
-            this.messageMap.forEach((value: Message[], key: string) => {
-                let contactName = value[0].contactName;
-                this.contacts.push({
-                    name: (contactName != '(Unknown)') ? contactName : null,
-                    address: key as string,
-                    messageCount: value.length
-                });
+				value = value.sort((message1, message2) => message1!.date!.getTime() - message2!.date!.getTime());
+                this.messageMap.set(key, value);
             });
-
-            resolve();
-        });
+            this.messageMap.forEach((value: Message[], key: string) => {
+                    let contactName = value[0].contactName;
+                    this.contacts.push({
+                            name: (contactName != '(Unknown)') ? contactName : "",
+                            address: key as string,
+                            messageCount: value.length
+                    });
+                });
+                resolve();
+            });
     }
 
-    clearAllMessages(): Promise<any> {
+    clearAllMessages(): Promise<void> {
         return new Promise((resolve, reject) => {
             this.messageMap = new Map();
             this.messages = new Array<Message>();
@@ -128,36 +124,33 @@ export class SmsStoreService {
     }
 
     // Get the messages for a specific contact
-    getMessages(contactId: string): Promise<Message[]> {
-        let returnMessages: Message[];
+    getMessages(contactId: string): Promise<Message[]|undefined> {
+        let returnMessages: Message[]|undefined;
         return new Promise((resolve, reject) => {
             returnMessages = this.messageMap.get(contactId);
             resolve(returnMessages);
         });
     }
-	
-	fillContactNames(contactMap: Map<string, string>): Promise<void> {
-		return new Promise((resolve, reject) => {
-			//console.log(this.contacts);
-			this.contacts.forEach(function(contact)
-			{
-				let name: string;
-				console.log(contact.address);
-				name = contactMap.get(contact.address);
-				if (name)
-				{
-					contact.name = name;
-					console.log(contact.name);
-				}
-				else
-				{
-					console.log("not found");
-				}
-			});
-			resolve();
-		});
-	}
+    
+    fillContactNames(contactMap: Map<string, string>): Promise<void> {
+        return new Promise((resolve, reject) => {
+            //console.log(this.contacts);
+            this.contacts.forEach(function(contact)
+            {
+                let name: string|undefined;
+                console.log(contact.address);
+                name = contactMap.get(contact.address);
+                if (name)
+                {
+                    contact.name = name;
+                    console.log(contact.name);
+                }
+                else
+                {
+                    console.log("not found");
+                }
+            });
+            resolve();
+        });
+    }
 }
-
-
-

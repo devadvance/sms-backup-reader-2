@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Message } from './message';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class SmsLoaderService {
-    messages: Message[];
+    messages!: Message[];
 
     constructor() { }
 
@@ -26,7 +29,7 @@ export class SmsLoaderService {
         });
     }
 
-    getLoadedMessages(): Promise<Message[]> {
+    getLoadedMessages(): Promise<Message[]|unknown> {
         return new Promise((resolve, reject) => {
             resolve(this.messages);
         }).catch(this.handleError);
@@ -46,46 +49,50 @@ export class SmsLoaderService {
 
         reader.readAsText(file, 'UTF-8');
 
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             reader.onload = (event: any) => { // Shouldn't need 'any' but this fixes an issue with TS definitions
             var cleanedText = this.cleanString(event.target.result);
             xmlDoc = parser.parseFromString(cleanedText, 'text/xml');
             for (let sms of xmlDoc.getElementsByTagName('sms')) {
-                this.messages.push({
-                    //contactNumber: sms.getAttribute('address'),
-                    contactAddress: sms.getAttribute('address'),
-                    contactName: sms.getAttribute('contact_name'),
-                    type: parseInt(sms.getAttribute('type')),
-                    timestamp: sms.getAttribute('date'),
-                    date: new Date(parseInt(sms.getAttribute('date'))),
-                    body: sms.getAttribute('body')
-                });
+                if (sms.getAttribute('body') == ''){
+                        console.log('message deleted' + new Date(parseInt(sms.getAttribute('date'))));
+                } else {
+                        this.messages.push({
+                            //contactNumber: sms.getAttribute('address'),
+                            contactAddress: sms.getAttribute('address'),
+                            contactName: sms.getAttribute('contact_name'),
+                            type: parseInt(sms.getAttribute('type')),
+                            timestamp: sms.getAttribute('date'),
+                            date: new Date(parseInt(sms.getAttribute('date'))),
+                            body: sms.getAttribute('body')
+                        });
+                }
             }
-			for (let mms of xmlDoc.getElementsByTagName('mms')) {				
-				let contactAddress:string = "";
-				let body:string ="";
-				let type:number = 3;
-				for (let addr of mms.getElementsByTagName('addr')) {
-					if ((addr.getAttribute('type') == "137") || 
-					    (contactAddress == 'insert-address-token'))
-					{
-						contactAddress = addr.getAttribute('address');
-					}
-					if (contactAddress == 	'insert-address-token')
-					{
-						type = 4;
-					}
-				}
-				for (let part of mms.getElementsByTagName('part')) {
-					if (part.getAttribute('ct') == "image/jpeg")
-					{
-						body = body + '<img style="vertical-align:top" src="data:image/jpeg;base64,' +  part.getAttribute('data') + '"/>';
-					}
-					if (part.getAttribute('ct') == "text/plain")
-					{
-						body = body + '<div>'+ part.getAttribute('text') + '<div/>';
-					}
-				}
+            for (let mms of xmlDoc.getElementsByTagName('mms')) {
+                let contactAddress:string = "";
+                let body:string ="";
+                let type:number = 3;
+                for (let addr of mms.getElementsByTagName('addr')) {
+                    if ((addr.getAttribute('type') == "137") || 
+                        (contactAddress == 'insert-address-token'))
+                    {
+                        contactAddress = addr.getAttribute('address');
+                    }
+                    if (contactAddress ==     'insert-address-token')
+                    {
+                        type = 4;
+                    }
+                }
+                for (let part of mms.getElementsByTagName('part')) {
+                    if (part.getAttribute('ct') == "image/jpeg")
+                    {
+                        body = body + '<img style="vertical-align:top" src="data:image/jpeg;base64,' +  part.getAttribute('data') + '"/>';
+                    }
+                    if (part.getAttribute('ct') == "text/plain")
+                    {
+                        body = body + '<div>'+ part.getAttribute('text') + '<div/>';
+                    }
+                }
                 this.messages.push({
                     contactAddress: contactAddress,
                     contactName: mms.getAttribute('contact_name'),
@@ -96,10 +103,7 @@ export class SmsLoaderService {
                 });
             }
             resolve();
-        }
-
- 
-    }).catch(this.handleError);
+            }
+        }).catch(this.handleError);
     }
-
 }

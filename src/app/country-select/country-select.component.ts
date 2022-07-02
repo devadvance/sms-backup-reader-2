@@ -9,8 +9,8 @@ import { VcfStoreService }  from '../vcf-store.service';
 })
 
 export class CountrySelectComponent implements OnInit {
-    countries: Country[];
-    selectedItem: string;
+    countries: Country[] = [];
+    selectedItem: string = "";
 
     constructor(private smsStoreService: SmsStoreService,
 				private vcfStoreService: VcfStoreService) { }

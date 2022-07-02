@@ -1,5 +1,5 @@
 <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
@@ -9,13 +9,14 @@
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
                 <sms-loader (onLoaded)="onSmsLoaded($event)"></sms-loader>
-				<vcf-loader (onLoaded)="onVcfLoaded($event)"></vcf-loader>
+                <vcf-loader (onLoaded)="onVcfLoaded($event)"></vcf-loader>
                 <button class="mdl-button mdl-js-button mdl-button--accent" style="float:right;" routerLink="/settings" routerLinkActive="active">
                     Settings
                 </button>
             </nav>
         </div>
     </header>
+		 <router-outlet></router-outlet>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Menu</span>
         <nav class="mdl-navigation">
@@ -24,13 +25,7 @@
             <a class="mdl-navigation__link" routerLink="/settings" routerLinkActive="active">Settings</a>
         </nav>
     </div>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-
-            <router-outlet></router-outlet>
-
-        </div>
-    </main>
+		<main class="mdl-layout__content"></main>		
     <footer class="mdl-mini-footer">
         <div class="mdl-mini-footer__left-section">
             <div class="mdl-logo">SMS Backup Reader 2</div>

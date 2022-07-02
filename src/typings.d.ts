@@ -1,5 +1,5 @@
 /* SystemJS module definition */
-declare var require: any;
+declare var require: NodeRequire;
 
 declare module 'awesome-phonenumber';
 declare var module: NodeModule;

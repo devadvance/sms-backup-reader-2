@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';  
 
 import { Message } from '../message';
 import { Contact } from '../contact';
@@ -13,13 +13,13 @@ import { SmsStoreService }  from '../sms-store.service';
 
 export class MessageListComponent implements OnInit {
 
-    messages: Message[];
-    messageMap: Map<string, Message[]>;
+    messages: Message[] =[];
+    messageMap: Map<string, Message[]> = new Map();
 
-    messagesLoaded: boolean;
-    loadingSubscription: Subscription;
-    contactClickedSubscription: Subscription;
-    selectedContact: Contact;
+    messagesLoaded: boolean = false;
+    loadingSubscription!: Subscription;
+    contactClickedSubscription!: Subscription;
+    selectedContact: Contact = new Contact("", 0,"");
 
     constructor(private smsStoreService: SmsStoreService) { }
 
@@ -35,7 +35,10 @@ export class MessageListComponent implements OnInit {
         .subscribe(contact => {
             this.selectedContact = contact;
             if (contact) {
-                this.messages = this.messageMap.get(contact.address);
+                var messages = this.messageMap.get(contact.address);
+                if (messages) {
+                    this.messages = messages;
+                }
             }
             return;
         });
@@ -54,7 +57,10 @@ export class MessageListComponent implements OnInit {
     }
 
     showMessages(contactId: string): void {
-        this.messages = this.messageMap.get(contactId);
+        var messages =  this.messageMap.get(contactId);
+        if (messages) {
+            this.messages = messages;
+        }
     }
 
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -22,10 +21,7 @@ import {ContactSearchPipe} from './components/pipes/contact-search-pipe';
 const appRoutes: Routes = [
 { path: 'main', component: MainComponent },
 { path: 'settings', component: SettingsComponent },
-{ path: '',
-redirectTo: '/main',
-pathMatch: 'full'
-}];
+];
 
 @NgModule({
     declarations: [
@@ -43,7 +39,6 @@ pathMatch: 'full'
     imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     RouterModule.forRoot(appRoutes)
     ],
     providers: [SmsStoreService, SmsLoaderService, VcfLoaderService, VcfStoreService],

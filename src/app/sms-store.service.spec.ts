@@ -4,6 +4,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { SmsStoreService } from './sms-store.service';
 
 describe('SmsStoreService', () => {
+  let service: SmsStoreService;
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [SmsStoreService]

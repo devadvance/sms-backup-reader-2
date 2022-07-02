@@ -9,7 +9,7 @@ This app is currently in alpha.
 **You can access the app here: [http://mattj.io/sms-backup-reader-2/](http://mattj.io/sms-backup-reader-2/)**
 
 ## Features
-
+* update to last version angular/cli: ~14.0.2 (JLTRY)
 * Load SMS backup files produced by and Android app SMS Backup & Restore by Ritesh
 * International support (non-latin character) and emoji support
 * MSS support (thanks to JLTRY)

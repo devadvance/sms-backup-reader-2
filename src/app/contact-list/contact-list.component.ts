@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 
 import { Message } from '../message';
 import { Contact } from '../contact';
@@ -13,11 +13,11 @@ import { SmsStoreService }  from '../sms-store.service';
 
 export class ContactListComponent implements OnInit {
 
-	messagesLoaded: boolean;
-    loadingSubscription: Subscription;
-    contacts: Contact[];
-    selectedContact: Contact;
-    numfilter: string
+    messagesLoaded: boolean = false;
+    loadingSubscription!: Subscription;
+    contacts: Contact[] = [];
+    selectedContact!: Contact ;
+    numfilter: string ="";
 
 
     constructor(private smsStoreService: SmsStoreService) { }
@@ -36,12 +36,12 @@ export class ContactListComponent implements OnInit {
         this.smsStoreService.getAllContacts().then((contacts) => this.contacts = contacts);
     }
 
-    showMessages(contact) {
+    showMessages(contact: Contact) {
         this.selectedContact = contact;
         this.smsStoreService.broadcastContactClicked(contact);
     }
 
-	isSelected(contact) {
+    isSelected(contact: Contact) {
         return(this.selectedContact == contact);
     }
     ngOnDestroy() {

@@ -5,14 +5,18 @@ import { Contact } from '../../contact';
     pure: true
 })
 export class ContactSearchPipe implements PipeTransform {
-    transform(data: Contact[], searchTerm: string): any[] {
+    transform(data: Contact[], searchTerm: string): Contact[] {
         if(!data || !searchTerm){
             return data;
         }
         searchTerm = searchTerm.toUpperCase();
         return data.filter(item => {
-            return (item.address.indexOf(searchTerm) !== -1 || 
-                (item.name !== null && item.name.toUpperCase().indexOf(searchTerm) !== -1)); 
+            if (item !== null) {
+                return (item.address.indexOf(searchTerm) !== -1 || 
+                                ((item!== null) && (item?.name !== null) && item?.name?.toUpperCase().indexOf(searchTerm) !== -1)); 
+            } else {
+                    return false;
+            }
         });
     }
 }

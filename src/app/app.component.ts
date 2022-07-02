@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { SmsLoaderComponent } from './sms-loader/sms-loader.component';
 import { VcfLoaderComponent } from './vcf-loader/vcf-loader.component';
+import { MainComponent } from './main/main.component';
 import { MessageListComponent } from './message-list/message-list.component';
 import { SmsStoreService } from './sms-store.service';
 import { SmsLoaderService } from './sms-loader.service';
+import { Message } from './message';
 import { VcfLoaderService } from './vcf-loader.service';
 import { VcfStoreService } from './vcf-store.service';
 var URLSearchParams = require('url-search-params');

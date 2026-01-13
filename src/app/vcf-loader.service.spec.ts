@@ -1,16 +1,16 @@
-import { TestBed, inject } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 
 import { VcfLoaderService } from './vcf-loader.service';
 
 describe('VcfLoaderService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [VcfLoaderService]
+      providers: [VcfLoaderService],
     });
   });
 
-  it('should be created', inject([VcfLoaderService], (service: VcfLoaderService) => {
+  it('should be created', () => {
+    const service = TestBed.inject(VcfLoaderService);
     expect(service).toBeTruthy();
-  }));
+  });
 });

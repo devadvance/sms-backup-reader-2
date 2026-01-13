@@ -5,7 +5,8 @@ import { VcfLoaderService } from '../vcf-loader.service';
 @Component({
     selector: 'vcf-loader',
     templateUrl: './vcf-loader.component.html',
-    styleUrls: ['./vcf-loader.component.css']
+    styleUrls: ['./vcf-loader.component.css'],
+    standalone: false
 })
 export class VcfLoaderComponent implements OnInit {
     @Output() onLoaded = new EventEmitter<boolean>();

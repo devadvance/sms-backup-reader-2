@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 import { Message } from './message';
 import { Contact } from './contact';
@@ -24,16 +24,22 @@ export class SmsStoreService {
         return Promise.resolve(this.messagesLoaded);
     }
 
-    changeCountry(countryCode: string): Promise<any> {
-        return new Promise((resolve, reject) => {
+    changeCountry(countryCode: string): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
 			if (this.countryCode != countryCode)
 			{
 				this.countryCode = countryCode;
 				if (this.messagesLoaded) {
-					this.loadAllMessages(this.messages);
+					this.loadAllMessages(this.messages).then(() => {
+						this.broadcastMessagesLoaded(true);
+						resolve();
+					});
+				} else {
+					resolve();
 				}
+			} else {
+				resolve();
 			}
-            resolve();
         });
     }
 
@@ -69,42 +75,64 @@ export class SmsStoreService {
         this.contacts = new Array<Contact>();
         return new Promise((resolve, reject) => {
             this.messages = messages;
-            for (let message of messages) {
-                let mapEntry;
-                let phone = new awesomePhone(message.contactAddress, this.countryCode);
-                let contactAddress: string = phone.getNumber('international');  
-                if (!contactAddress) {
-                    contactAddress = message.contactAddress;
+            
+            // Process messages in chunks to avoid freezing UI
+            const CHUNK_SIZE = 500;
+            let index = 0;
+            
+            const processChunk = () => {
+                const endIndex = Math.min(index + CHUNK_SIZE, messages.length);
+                
+                for (let i = index; i < endIndex; i++) {
+                    let message = messages[i];
+                    let mapEntry;
+                    let phone = new awesomePhone(message.contactAddress, this.countryCode);
+                    let contactAddress: string = phone.getNumber('international');  
+                    if (!contactAddress) {
+                        contactAddress = message.contactAddress;
+                    }
+                    
+                    if(!(mapEntry = this.messageMap.get(contactAddress))) {
+                        mapEntry = new Array<Message>();
+                        mapEntry.push(message);
+                        this.messageMap.set(contactAddress, mapEntry);
+                    } else {
+                        mapEntry.push(message);
+                    }
                 }
-                //console.log(`contact: ${contactAddress}`);
-                if(!(mapEntry = this.messageMap.get(contactAddress))) {
-                    mapEntry = new Array<Message>();
-                    mapEntry.push(message);
-                    this.messageMap.set(contactAddress, mapEntry);
+                
+                index = endIndex;
+                
+                if (index < messages.length) {
+                    // More messages to process, schedule next chunk
+                    setTimeout(processChunk, 0);
                 } else {
-                    mapEntry.push(message);
-                }
-            }
-			//sort by timestamp
-			this.messageMap.forEach(( value: Message[], key: string) => {
-				value = value.sort((message1, message2) => message1.date.getTime() - message2.date.getTime());
-				this.messageMap.set(key, value);
-			});
-            this.messageMap.forEach((value: Message[], key: string) => {
-                let contactName = value[0].contactName;
-                this.contacts.push({
-                    name: (contactName != '(Unknown)') ? contactName : null,
-                    address: key as string,
-                    messageCount: value.length
-                });
-            });
+                    // All messages processed, now sort and create contacts
+                    this.messageMap.forEach(( value: Message[], key: string) => {
+                        value = value.sort((message1, message2) => message1.date.getTime() - message2.date.getTime());
+                        this.messageMap.set(key, value);
+                    });
+                    
+                    this.messageMap.forEach((value: Message[], key: string) => {
+                        let contactName = value[0].contactName;
+                        this.contacts.push({
+                            name: (contactName != '(Unknown)') ? contactName : null,
+                            address: key as string,
+                            messageCount: value.length
+                        });
+                    });
 
-            resolve();
+                    this.messagesLoaded = true;
+                    resolve();
+                }
+            };
+            
+            processChunk();
         });
     }
 
-    clearAllMessages(): Promise<any> {
-        return new Promise((resolve, reject) => {
+    clearAllMessages(): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
             this.messageMap = new Map();
             this.messages = new Array<Message>();
             this.messagesLoaded = false;

@@ -1,16 +1,16 @@
-/* tslint:disable:no-unused-variable */
+import { TestBed } from '@angular/core/testing';
 
-import { TestBed, async, inject } from '@angular/core/testing';
 import { SmsLoaderService } from './sms-loader.service';
 
 describe('SmsLoaderService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [SmsLoaderService]
+            providers: [SmsLoaderService],
         });
     });
 
-    it('should ...', inject([SmsLoaderService], (service: SmsLoaderService) => {
+    it('should be created', () => {
+        const service = TestBed.inject(SmsLoaderService);
         expect(service).toBeTruthy();
-    }));
+    });
 });

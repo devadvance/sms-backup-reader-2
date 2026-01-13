@@ -1,15 +1,16 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { VcfStoreService } from './vcf-store.service';
 
 describe('VcfStoreService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [VcfStoreService]
+      providers: [VcfStoreService],
     });
   });
 
-  it('should be created', inject([VcfStoreService], (service: VcfStoreService) => {
+  it('should be created', () => {
+    const service = TestBed.inject(VcfStoreService);
     expect(service).toBeTruthy();
-  }));
+  });
 });

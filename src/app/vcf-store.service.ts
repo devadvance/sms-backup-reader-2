@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { Contact } from './contact';
 var vCard = require('vcf');
 import awesomePhone from 'awesome-phonenumber';
@@ -27,10 +27,15 @@ export class VcfStoreService {
 			{
 				this.countryCode = countryCode;
 				if (this.contacts) {
-					this.loadAllContacts(this.contacts);
+					this.loadAllContacts(this.contacts).then(() => {
+						resolve();
+					});
+				} else {
+					resolve();
 				}
+			} else {
+				resolve();
 			}
-            resolve();
         });
     }
 

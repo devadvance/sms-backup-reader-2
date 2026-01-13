@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -43,10 +42,15 @@ pathMatch: 'full'
     imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     RouterModule.forRoot(appRoutes)
     ],
-    providers: [SmsStoreService, SmsLoaderService, VcfLoaderService, VcfStoreService],
+    providers: [
+        provideBrowserGlobalErrorListeners(),
+        SmsStoreService,
+        SmsLoaderService,
+        VcfLoaderService,
+        VcfStoreService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

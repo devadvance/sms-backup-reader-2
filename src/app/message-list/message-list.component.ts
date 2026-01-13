@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { Message } from '../message';
 import { Contact } from '../contact';
@@ -8,7 +8,8 @@ import { SmsStoreService }  from '../sms-store.service';
 @Component({
     selector: 'message-list',
     templateUrl: './message-list.component.html',
-    styleUrls: ['./message-list.component.css']
+    styleUrls: ['./message-list.component.css'],
+    standalone: false
 })
 
 export class MessageListComponent implements OnInit {

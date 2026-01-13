@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Global styles */
+body {
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
 input[type="file"] {
 	display: none;
 }
@@ -9,72 +17,155 @@ country-select {
 	text-align: center;
 }
 
-message-list {
-
-}
-
-contact-list {
-
-}
-
 .page-content {
 	overflow: hidden;
 	width: 100%;
+	height: 100%;
 }
 
+/* Contact list styling */
 .contacts {
-  overflow-y: scroll;
-	background: #f5f2f0;
+	overflow-y: auto;
+	background: #f9f9f9;
 	position: absolute;
 	width: 30%;
-	/*padding: 10px;*/
-	left:0;
-	top:0;
-	bottom:0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	border-right: 1px solid #e0e0e0;
+	box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
 }
 
+/* Messages area styling */
 .messages {
-  overflow-y: scroll;
-	/*background: #fff123;*/
+	overflow-y: auto;
+	background: #ffffff;
 	position: absolute;
 	width: 70%;
-	/*padding: 10px;*/
-	right:0;
-	top:0;
-	bottom:0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 16px;
+	box-sizing: border-box;
 }
+
+/* List item height fixes */
 .mdl-list__item--two-line {
-    height: auto!important;
+	height: auto !important;
+	min-height: 72px;
 }
+
 .mdl-list__item--two-line .mdl-list__item-primary-content {
-	   height: auto!important;
+	height: auto !important;
 }
+
+/* Message bubble styling - improved chat-like appearance */
 .message-sent {
-  background: #FFF123;
-  text-align: right;
+	background: #dcf8c6;
+	text-align: right;
+	border-radius: 8px;
+	margin: 8px 0;
+	padding: 12px 16px;
+	max-width: 70%;
+	margin-left: auto;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .message-received {
-  background: #DDD123;
-  text-align: left;
+	background: #ffffff;
+	text-align: left;
+	border-radius: 8px;
+	margin: 8px 0;
+	padding: 12px 16px;
+	max-width: 70%;
+	margin-right: auto;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	border: 1px solid #e0e0e0;
 }
 
-
-.mms-received,.mms-sent {
-    height: auto!important;
-}
-li.mms-received > span,li.mms-sent > span
-{
-	height: auto!important;
+/* MMS message styling */
+.mms-received, .mms-sent {
+	height: auto !important;
 }
 
+li.mms-received > span, li.mms-sent > span {
+	height: auto !important;
+}
+
+/* Image sizing */
 img {
-	max-height: 40%;
-	max-width: 40%;
-}	
+	max-height: 300px;
+	max-width: 100%;
+	border-radius: 4px;
+	margin: 8px 0;
+}
 
-.selected-contact{
-	background:rgb(76, 76, 151);
-	color: #BBB
+/* Selected contact styling - improved contrast */
+.selected-contact {
+	background: #e3f2fd !important;
+	color: #1976d2 !important;
+	border-left: 4px solid #1976d2;
+}
+
+/* Active/hover states */
+.contact-item:hover {
+	background: #f5f5f5;
+	transition: background 0.2s ease;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+	.contacts {
+		width: 100%;
+		position: relative;
+		border-right: none;
+		max-height: 40vh;
+	}
+
+	.messages {
+		width: 100%;
+		position: relative;
+		padding: 12px;
+		min-height: 50vh;
+	}
+
+	.page-content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.message-sent,
+	.message-received {
+		max-width: 85%;
+	}
+}
+
+/* Smooth transitions */
+.contact-item,
+.message-sent,
+.message-received {
+	transition: all 0.2s ease;
+}
+
+/* Improve scrollbar styling for webkit browsers */
+.contacts::-webkit-scrollbar,
+.messages::-webkit-scrollbar {
+	width: 8px;
+}
+
+.contacts::-webkit-scrollbar-track,
+.messages::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+.contacts::-webkit-scrollbar-thumb,
+.messages::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 4px;
+}
+
+.contacts::-webkit-scrollbar-thumb:hover,
+.messages::-webkit-scrollbar-thumb:hover {
+	background: #a8a8a8;
 }
 

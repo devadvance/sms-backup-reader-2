@@ -1,0 +1,33 @@
+/* App-level styles */
+.mdl-layout__header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mdl-layout-title {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.mdl-layout-title:hover {
+    opacity: 0.8;
+}
+
+.mdl-navigation .mdl-button {
+    margin: 0 8px;
+}
+
+/* Footer improvements */
+.mdl-mini-footer {
+    background-color: #424242;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.mdl-mini-footer a {
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mdl-mini-footer a:hover {
+    color: #03a9f4;
+}

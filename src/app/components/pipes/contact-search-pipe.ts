@@ -2,7 +2,8 @@ import { PipeTransform, Pipe } from '@angular/core';
 import { Contact } from '../../contact';
 @Pipe({
     name: 'contactSearchPipe',
-    pure: true
+    pure: true,
+    standalone: false
 })
 export class ContactSearchPipe implements PipeTransform {
     transform(data: Contact[], searchTerm: string): any[] {

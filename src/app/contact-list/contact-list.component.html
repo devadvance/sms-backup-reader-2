@@ -1,12 +1,20 @@
 <div>
-    Filter Contacts: <input type="text" [(ngModel)]="numfilter" />
+    <div style="padding: 16px; background: #ffffff; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 10;">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;">
+            <input class="mdl-textfield__input" type="text" id="contact-filter" [(ngModel)]="numfilter" />
+            <label class="mdl-textfield__label" for="contact-filter">Filter Contacts...</label>
+        </div>
+    </div>
     <ul class="demo-list-two mdl-list">
         <li class="mdl-list__item mdl-list__item--two-line contact-item" [ngClass]="{'selected-contact': contact==selectedContact}"
              *ngFor="let contact of contacts | contactSearchPipe: numfilter" (click)="showMessages(contact)"  [ngClass]="{'active-row': contact == selectedContact}">
             <span class="mdl-list__item-primary-content" >
                 <i class="material-icons mdl-list__item-avatar">person</i>
-                <span>Address: {{contact.address}}<br/> {{contact.name}}</span>
-                <span class="mdl-list__item-sub-title">Messages: {{contact.messageCount}}</span>
+                <span>
+                    <span style="font-weight: 500;">{{contact.name || contact.address}}</span>
+                    <span *ngIf="contact.name" style="font-size: 12px; color: #757575;"><br/>{{contact.address}}</span>
+                </span>
+                <span class="mdl-list__item-sub-title">{{contact.messageCount}} messages</span>
             </span>
         </li>
     </ul>

@@ -1,0 +1,27 @@
+.message-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    gap: 8px;
+}
+
+.message-body {
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+
+.message-meta {
+    font-size: 11px;
+    color: #757575;
+    margin-top: 4px;
+    display: flex;
+    gap: 8px;
+}
+
+.message-type {
+    font-weight: 500;
+}
+
+.message-date {
+    opacity: 0.8;
+}

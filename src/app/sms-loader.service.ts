@@ -27,7 +27,7 @@ export class SmsLoaderService {
     }
 
     getLoadedMessages(): Promise<Message[]> {
-        return new Promise((resolve, reject) => {
+        return new Promise<Message[]>((resolve, reject) => {
             resolve(this.messages);
         }).catch(this.handleError);
     }
@@ -38,7 +38,7 @@ export class SmsLoaderService {
         return txt.value;
     }
 
-    loadSMSFile(file: File): Promise<any> {
+    loadSMSFile(file: File): Promise<void> {
         this.messages = new Array<Message>();
         let reader: FileReader = new FileReader();
         let parser: any = new DOMParser();
@@ -46,7 +46,7 @@ export class SmsLoaderService {
 
         reader.readAsText(file, 'UTF-8');
 
-        return new Promise((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
             reader.onload = (event: any) => { // Shouldn't need 'any' but this fixes an issue with TS definitions
             var cleanedText = this.cleanString(event.target.result);
             xmlDoc = parser.parseFromString(cleanedText, 'text/xml');

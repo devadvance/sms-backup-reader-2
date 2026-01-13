@@ -15,7 +15,7 @@ export class VcfLoaderService {
 
         reader.readAsText(file, 'UTF-8');
 
-        return new Promise((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
 				reader.onload = (event: any) => { // Shouldn't need 'any' but this fixes an issue with TS definitions			
 				this.vcards = event.target.result;
 				resolve(<string>this.vcards);				

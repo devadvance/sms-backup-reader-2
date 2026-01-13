@@ -10,10 +10,54 @@ This app is currently in alpha.
 
 ## Features
 
-* Load SMS backup files produced by and Android app SMS Backup & Restore by Ritesh
-* International support (non-latin character) and emoji support
-* MSS support (thanks to JLTRY)
+* Load SMS backup files produced by the Android app SMS Backup & Restore by Ritesh
+* International support (non‑Latin characters) and emoji support
+* MMS support (thanks to JLTRY)
 * VCF support (thanks to JLTRY)
+
+## Development
+
+### Requirements
+
+- Node.js + npm (modern versions recommended)
+
+### Install
+
+```bash
+npm install
+```
+
+### Run locally
+
+```bash
+npm start
+```
+
+Then open `http://localhost:4200/`.
+
+### Run unit tests
+
+Unit tests run via Angular's unit-test builder using the Vitest runner.
+
+```bash
+npm test
+```
+
+Watch mode:
+
+```bash
+npm run test:watch
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### End-to-end tests
+
+This repository currently does not include an end-to-end test setup (the legacy Protractor scaffolding was removed).
 
 ## Issues
 
@@ -25,7 +69,7 @@ If you encounter issues, please add the issues here: [https://github.com/devadva
 * Support for exporting media from MMS
 * More?
 
-## Note about emoji and text handing in this app (mostly for devs)
+## Note about emoji and text handling in this app (mostly for devs)
 
 SMS Backup & Restore saves emojis and other special characters in a very interesting way.
 

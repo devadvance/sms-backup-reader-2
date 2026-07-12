@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<?xml-stylesheet type="text/xsl" href="sms.xsl"?>
+<smses count="4" backup_set="97e66a20-362b-4ecb-a020-e02d9304e99e" backup_date="1721556032311" type="full">
+  <!-- Image MMS -->
+  <mms date="1721161764000" ct_t="application/vnd.wap.multipart.related" msg_box="1" address="+15550000003" read="1" readable_date="Jul 16, 2024 13:29:24" contact_name="Contact C">
+    <parts>
+      <part seq="0" ct="image/png" name="image.png" cl="image.png" data="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" />
+      <part seq="0" ct="text/plain" name="text.txt" text="Here is an image attachment" />
+    </parts>
+    <addrs>
+      <addr address="+15550000003" type="137" />
+    </addrs>
+  </mms>
+
+  <!-- Video MMS -->
+  <mms date="1721161765000" ct_t="application/vnd.wap.multipart.related" msg_box="1" address="+15550000003" read="1" readable_date="Jul 16, 2024 13:29:25" contact_name="Contact C">
+    <parts>
+      <part seq="0" ct="video/mp4" name="video.mp4" cl="video.mp4" data="AAAAHGZ0eXBtcDQyAAAAAG1wZDJsYXBwbGUAAAAIZnJlZQAAAIdtZGF0" />
+      <part seq="0" ct="text/plain" name="text.txt" text="Here is a video attachment" />
+    </parts>
+    <addrs>
+      <addr address="+15550000003" type="137" />
+    </addrs>
+  </mms>
+
+  <!-- Audio MMS -->
+  <mms date="1721161766000" ct_t="application/vnd.wap.multipart.related" msg_box="1" address="+15550000003" read="1" readable_date="Jul 16, 2024 13:29:26" contact_name="Contact C">
+    <parts>
+      <part seq="0" ct="audio/mp3" name="audio.mp3" cl="audio.mp3" data="SUQzBAAAAAAAAFRYWFgAAAASAAAAbXlsaWdodCBhcmNoaXZlAFRQRTEAAAALAAAAc29tZW9uZQA=" />
+      <part seq="0" ct="text/plain" name="text.txt" text="Here is an audio attachment" />
+    </parts>
+    <addrs>
+      <addr address="+15550000003" type="137" />
+    </addrs>
+  </mms>
+
+  <!-- Document (PDF) MMS -->
+  <mms date="1721161767000" ct_t="application/vnd.wap.multipart.related" msg_box="1" address="+15550000003" read="1" readable_date="Jul 16, 2024 13:29:27" contact_name="Contact C">
+    <parts>
+      <part seq="0" ct="application/pdf" name="document.pdf" cl="document.pdf" data="JVBERi0xLjQKMSAwIG9iagogIDw8IC9UeXBlIC9DYXRhbG9nIC9QYWdlcyAyIDAgUiA+PgplbmRvYmoKMiAwIG9iagogIDw8IC9UeXBlIC9QYWdlcyAvS2lkcyBbIDMgMCBSIF0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBSIHQgJVBERi1lbmRvZg==" />
+      <part seq="0" ct="text/plain" name="text.txt" text="Here is a PDF attachment" />
+    </parts>
+    <addrs>
+      <addr address="+15550000003" type="137" />
+    </addrs>
+  </mms>
+</smses>

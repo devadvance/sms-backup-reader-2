@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<?xml-stylesheet type="text/xsl" href="sms.xsl"?>
+<smses count="2" backup_set="97e66a20-362b-4ecb-a020-e02d9304e99e" backup_date="1721556032311" type="full">
+  <!-- MMS with corrupted base64 -->
+  <mms date="1721161768000" ct_t="application/vnd.wap.multipart.related" msg_box="1" address="+15550000004" read="1" readable_date="Jul 16, 2024 13:29:28" contact_name="Contact D">
+    <parts>
+      <part seq="0" ct="image/png" name="corrupt_image.png" cl="corrupt_image.png" data="not-valid-base64-content!!" />
+      <part seq="0" ct="text/plain" name="text.txt" text="MMS with corrupted base64 image data" />
+    </parts>
+    <addrs>
+      <addr address="+15550000004" type="137" />
+    </addrs>
+  </mms>
+
+  <!-- MMS with unsupported attachment type -->
+  <mms date="1721161769000" ct_t="application/vnd.wap.multipart.related" msg_box="1" address="+15550000004" read="1" readable_date="Jul 16, 2024 13:29:29" contact_name="Contact D">
+    <parts>
+      <part seq="0" ct="application/x-corrupt" name="corrupt.file" cl="corrupt.file" data="not-valid-base64-content!!" />
+      <part seq="0" ct="text/plain" name="text.txt" text="MMS with unsupported attachment type" />
+    </parts>
+    <addrs>
+      <addr address="+15550000004" type="137" />
+    </addrs>
+  </mms>
+</smses>

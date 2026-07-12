@@ -1,0 +1,19 @@
+{
+  "name": "@sms-backup-reader/lib",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "awesome-phonenumber": "^7.8.0",
+    "vcard4-ts": "^0.4.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
+  }
+}

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<?xml-stylesheet type="text/xsl" href="sms.xsl"?>
+<smses count="7" backup_set="97e66a20-362b-4ecb-a020-e02d9304e99e" backup_date="1721556032311" type="full">
+  <sms protocol="0" address="+15550000001" date="1512226167463" type="1" subject="null" body="SMS 1 in Thread 1" read="1" readable_date="Dec 2, 2017 06:49:27" contact_name="Contact A" />
+  <sms protocol="0" address="+15550000001" date="1512226192812" type="2" subject="null" body="SMS 2 in Thread 1" read="1" readable_date="Dec 2, 2017 06:49:52" contact_name="Contact A" />
+  <sms protocol="0" address="+15550000001" date="1512226208124" type="1" subject="null" body="SMS 3 in Thread 1" read="1" readable_date="Dec 2, 2017 06:50:08" contact_name="Contact A" />
+  <mms date="1720997593000" ct_t="text/plain" msg_box="1" address="+15550000001" read="1" readable_date="Jul 14, 2024 15:53:13" contact_name="Contact A">
+    <parts>
+      <part seq="0" ct="text/plain" name="attachment_1" text="MMS 1 text in Thread 1" />
+    </parts>
+    <addrs>
+      <addr address="+15550000001" type="130" />
+    </addrs>
+  </mms>
+  <sms protocol="0" address="+15550000002" date="1512236216779" type="1" subject="null" body="SMS 4 in Thread 2" read="1" readable_date="Dec 2, 2017 09:36:56" contact_name="Contact B" />
+  <sms protocol="0" address="+15550000002" date="1512236370051" type="2" subject="null" body="SMS 5 in Thread 2" read="1" readable_date="Dec 2, 2017 09:39:30" contact_name="Contact B" />
+  <mms date="1720998243000" ct_t="application/vnd.wap.multipart.related" msg_box="2" address="+15550000002" read="1" readable_date="Jul 14, 2024 16:04:03" contact_name="Contact B">
+    <parts>
+      <part seq="0" ct="text/plain" name="attachment_2" text="MMS 2 text in Thread 2" />
+    </parts>
+    <addrs>
+      <addr address="+15550000002" type="137" />
+    </addrs>
+  </mms>
+</smses>

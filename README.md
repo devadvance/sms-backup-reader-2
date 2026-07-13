@@ -16,8 +16,6 @@ Access the live app at: [mattj.io/sms-backup-reader-2/](https://mattj.io/sms-bac
 * **File exports**: Export active threads or all loaded conversations to CSV and plain text files.
 * **Media and emojis**: Decodes and displays MMS attachments, fallbacks, emojis, and surrogate character entity codes.
 
----
-
 ## Development
 
 ### Prerequisites
@@ -40,8 +38,6 @@ npm run build
 # Preview production build locally.
 npm run preview
 ```
-
----
 
 ## Verification and testing
 
